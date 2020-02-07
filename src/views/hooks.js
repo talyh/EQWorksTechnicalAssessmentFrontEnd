@@ -11,7 +11,9 @@ export const useEventsData = () => {
       setIsError(false);
       setIsLoading(true);
       try {
-        const result = await fetch("http://localhost:5555/events/hourly");
+        const result = await fetch(
+          "https://talyh-eqworks-backend.herokuapp.com/events/hourly"
+        );
         const data = await result.json();
         const transformed = aggregateHourlyByWeekDay(data);
         console.log("eventsData", transformed);
