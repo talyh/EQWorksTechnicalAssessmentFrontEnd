@@ -1,9 +1,8 @@
 import React from "react";
-import "./App.css";
-import Events from "./views/Events";
+import Router from "./router";
 
-function App() {
-  return <Events />;
-}
+const App = () => {
+  return <Router />;
+};
 
 export default App;
