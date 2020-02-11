@@ -1,30 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import {
-  faChartBar,
-  faMapMarkerAlt,
-  faTable
-} from "@fortawesome/free-solid-svg-icons";
-
-import InterestIcon from "../../components/InterestIcon";
+  EventsInterestIcon,
+  PoisInterestIcon,
+  StatsInterestIcon
+} from "../../components/InterestIcons";
 
 const Home = () => (
   <Container>
     <Intro>{`Hi there! What would you like to see today?`}</Intro>
     <InterestIconsContainer>
-      <InterestIcon
-        label="Events"
-        icon={faChartBar}
-        linkTo="/events"
-        size="large"
-      />
-      <InterestIcon label="Stats" icon={faTable} linkTo="/stats" size="large" />
-      <InterestIcon
-        label="Pois"
-        icon={faMapMarkerAlt}
-        linkTo="/pois"
-        size="large"
-      />
+      <EventsInterestIcon size="large" />
+      <StatsInterestIcon size="large" />
+      <PoisInterestIcon size="large" />
     </InterestIconsContainer>
   </Container>
 );

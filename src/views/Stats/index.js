@@ -18,7 +18,7 @@ const StatsView = () => {
         url={hourlyStatsUrl}
         transformationFunction={transformStatsToDataTable}
         title="Hourly Stats"
-        headers={["date", "impressions", "clicks", "revenue"]} // TODO IMMEDIATE - extract from data[0] after sorting has been fixed
+        headers={["date", "impressions", "clicks", "revenue"]}
         rowKeys={stat => stat.date.toString()}
         columnsTreatment={[
           stat => ({
@@ -61,7 +61,7 @@ const StatsView = () => {
         url={dailyStatsUrl}
         transformationFunction={transformStatsToDataTable}
         title="Daily Stats"
-        headers={["date", "impressions", "clicks", "revenue"]} // TODO IMMEDIATE - extract from data[0] after sorting has been fixed
+        headers={["date", "impressions", "clicks", "revenue"]}
         rowKeys={stat => stat.date.toString()}
         columnsTreatment={[
           stat => ({

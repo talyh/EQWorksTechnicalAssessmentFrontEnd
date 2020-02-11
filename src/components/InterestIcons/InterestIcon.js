@@ -40,9 +40,9 @@ const Container = styled.div`
     }
     ::after {
       content: ${props => props.size === "small" && `"${props.label}"`};
-      font-size: 12px
-      /* content: ${props => props.required && `" *"`}; */
+      font-size: 12px;
     }
+  }
 `;
 
 const Label = styled.div`

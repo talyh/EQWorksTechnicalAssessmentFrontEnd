@@ -130,8 +130,8 @@ const TableRow = styled.tr``;
 
 const TableContent = styled.tbody`
   display: block;
-  height: 500px;
-  overflow-y: scroll;
+  max-height: 500px;
+  overflow-y: overlay;
   color: rgba(8, 48, 107, 1);
 
   ${TableRow}:nth-child(2n) {

@@ -1,30 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import {
-  faChartBar,
-  faMapMarkerAlt,
-  faTable
-} from "@fortawesome/free-solid-svg-icons";
-
-import InterestIcon from "../../components/InterestIcon";
+  EventsInterestIcon,
+  PoisInterestIcon,
+  StatsInterestIcon
+} from "../../components/InterestIcons";
 
 const Header = () => (
   <Container>
     <Title>EQ Works Technical Assignment</Title>
     <InterestIconsContainer>
-      <InterestIcon
-        label="Events"
-        icon={faChartBar}
-        linkTo="/events"
-        size="small"
-      />
-      <InterestIcon label="Stats" icon={faTable} linkTo="/stats" size="small" />
-      <InterestIcon
-        label="Pois"
-        icon={faMapMarkerAlt}
-        linkTo="/pois"
-        size="small"
-      />
+      <EventsInterestIcon size="small" />
+      <StatsInterestIcon size="small" />
+      <PoisInterestIcon size="small" />
     </InterestIconsContainer>
   </Container>
 );
