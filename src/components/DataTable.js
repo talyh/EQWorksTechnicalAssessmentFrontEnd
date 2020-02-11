@@ -6,7 +6,7 @@ import Highlighter from "react-highlight-words";
 import SearchBox from "./SearchBox";
 import { sortArrayByCriteria, fuzzySearch } from "../utils";
 
-const DataTable = ({ data, headers, rowKeys, columnsTreatment }) => {
+const DataTable = ({ data, headers, rowKeys, columnsTreatment, onFilter }) => {
   const [sortCriteria, setSortCriteria] = useState("");
   const [searchCriteria, setSearchCriteria] = useState("");
 
@@ -26,6 +26,8 @@ const DataTable = ({ data, headers, rowKeys, columnsTreatment }) => {
         : displayData,
     [displayData, sortCriteria]
   );
+
+  onFilter && onFilter(displayData);
 
   return (
     <Container>
