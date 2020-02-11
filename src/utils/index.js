@@ -7,3 +7,4 @@ export * from "./aggregateQuartersByMonth";
 export * from "./transformStatsToDataTable";
 export * from "./transformPoiToDataTable";
 export * from "./sortArrayByCriteria";
+export * from "./fuzzySearch";

@@ -2,32 +2,46 @@ import React, { useState, useMemo } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import Highlighter from "react-highlight-words";
 import SearchBox from "./SearchBox";
-import { sortArrayByCriteria as sort } from "../utils";
+import { sortArrayByCriteria, fuzzySearch } from "../utils";
 
 const DataTable = ({ data, headers, rowKeys, columnsTreatment }) => {
-  const [sortingCriteria, setSortingCriteria] = useState("");
+  const [sortCriteria, setSortCriteria] = useState("");
+  const [searchCriteria, setSearchCriteria] = useState("");
 
-  const displayData = useMemo(
-    () => (sortingCriteria ? sort(data, sortingCriteria) : data),
-    [sortingCriteria, data]
+  let displayData = useMemo(
+    () =>
+      data.filter(item => {
+        const searchText = Object.values(item).join("");
+        return fuzzySearch(searchText, searchCriteria);
+      }),
+    [data, searchCriteria]
+  );
+
+  displayData = useMemo(
+    () =>
+      sortCriteria
+        ? sortArrayByCriteria(displayData, sortCriteria)
+        : displayData,
+    [displayData, sortCriteria]
   );
 
   return (
     <>
       <FilterArea>
-        <SearchBox />
+        <SearchBox value={searchCriteria} onChange={setSearchCriteria} />
       </FilterArea>
       <Total>{displayData.length} records</Total>
       <Table>
         <TableHeader>
           <tr>
             {headers.map(header => {
-              const isActiveSorting = header === sortingCriteria;
+              const isActiveSorting = header === sortCriteria;
               return (
                 <TableHeaderItem key={header} activeSorting={isActiveSorting}>
                   <ClickableHeader
-                    onClick={() => setSortingCriteria(header)}
+                    onClick={() => setSortCriteria(header)}
                     activeSorting={isActiveSorting}
                   >
                     {header.toUpperCase()}
@@ -45,7 +59,11 @@ const DataTable = ({ data, headers, rowKeys, columnsTreatment }) => {
                 const { key, display, align } = columnsTreatment(item);
                 return (
                   <TableCell key={key} align={align}>
-                    {display}
+                    <Highlight
+                      searchWords={searchCriteria.split(" ")}
+                      autoEscape={true}
+                      textToHighlight={display}
+                    />
                   </TableCell>
                 );
               })}
@@ -92,17 +110,20 @@ const ClickableHeader = styled.button`
   width: 100%;
   color: ${props => (props.activeSorting ? "rgba(220, 234, 255, 1)" : "white")};
   font-weight: ${props => props.activeSorting && "bold"};
+  font-family: "Questrial", sans-serif;
   font-size: 20px;
   background: transparent;
   border: none;
   outline: none;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 `;
 
 const SortIcon = styled(FontAwesomeIcon)`
   font-size: 24px;
   margin: 0px 10px;
+  padding-bottom: 2px;
 `;
 
 const TableRow = styled.tr``;
@@ -129,6 +150,13 @@ const TableCell = styled.td`
   padding: 20px;
   text-align: ${props => props.align};
   width: 200px;
+`;
+
+const Highlight = styled(Highlighter)`
+  mark {
+    background-color: rgba(8, 48, 107, 0.75);
+    color: white;
+  }
 `;
 
 export default DataTable;
