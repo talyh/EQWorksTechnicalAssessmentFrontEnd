@@ -28,7 +28,7 @@ const DataTable = ({ data, headers, rowKeys, columnsTreatment }) => {
   );
 
   return (
-    <>
+    <Container>
       <FilterArea>
         <SearchBox value={searchCriteria} onChange={setSearchCriteria} />
       </FilterArea>
@@ -71,9 +71,15 @@ const DataTable = ({ data, headers, rowKeys, columnsTreatment }) => {
           ))}
         </TableContent>
       </Table>
-    </>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+`;
 
 const FilterArea = styled.div`
   width: 100%;

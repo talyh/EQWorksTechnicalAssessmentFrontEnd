@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { LocaleContext } from "./contexts/LocaleContext";
 import Router from "./router";
 

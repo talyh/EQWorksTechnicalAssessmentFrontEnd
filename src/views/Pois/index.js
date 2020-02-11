@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { LocaleContext } from "../../contexts/LocaleContext";
 import Spinner from "../../components/Spinner";
 import DataTable from "../../components/DataTable";
+import Map from "../../components/Map";
 import { transformPoiToDataTable } from "../../utils";
 import { usePoisData } from "./hooks";
 
@@ -45,6 +46,7 @@ const StatsView = () => {
           ]}
         />
       )}
+      <Map data={poisData} />
     </Container>
   );
 };
@@ -52,8 +54,8 @@ const StatsView = () => {
 const Container = styled.div`
   margin: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
 `;
 
 export default StatsView;
