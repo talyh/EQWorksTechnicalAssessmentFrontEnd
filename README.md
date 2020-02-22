@@ -1,5 +1,5 @@
 ## Live Version
-https://talyh-eqworks-frontend.herokuapp.com/
+https://talyh-eqworks-frontend.herokuapp.com/ (note, Google Maps API Key has since been revoked to avoid unncessary calls/cost. The rest of the app can still be checked out on the Heroku link)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
